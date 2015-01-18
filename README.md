@@ -1,3 +1,8 @@
+Link to app:     
+https://morning-garden-3326.herokuapp.com/
+
+
+
 This repository is for publishing completed weekly tasks in a programming cource called Web-application development with Ruby on Rails at the University of Helsinki.     
 
 
