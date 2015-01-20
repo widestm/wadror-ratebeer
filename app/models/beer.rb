@@ -13,4 +13,9 @@ class Beer < ActiveRecord::Base
 		
 		self.ratings.average(:score).round(2)
 	end
+	def to_s
+		b = Brewery.find_by id:brewery.id
+		"#{name}, #{b.name}"
+		
+	end
 end
