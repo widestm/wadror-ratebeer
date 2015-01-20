@@ -1,0 +1,9 @@
+</br>
+
+Number of ratings <%= @ratings.count %>
+
+<ul>
+	<% @ratings.each do |rating| %>
+	<li> <%= rating.to_s %> </li>
+	<% end %>
+</ul>
