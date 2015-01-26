@@ -7,7 +7,10 @@ class RatingsController < ApplicationController
 		@beers = Beer.all
 	end
 	def create
-		Rating.create params.require(:rating).permit(:score, :beer_id)
+		rating = Rating.create params.require(:rating).permit(:score, :beer_id)
+
+		session[:last_rating] = rating.to_s
+
 		redirect_to ratings_path
 	end
 	def destroy
