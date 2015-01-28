@@ -7,6 +7,10 @@
 <p>
 	<%= "Has made #{pluralize(@user.ratings.count, 'rating')}, with an average of #{@user.average_rating} points" %>
 </p>
+Member of:
+<% @beer_clubs.each do |bc| %>
+<%= link_to bc.name, beer_club_path(bc.id)%>
+<% end %>
 <ul>
 	<% @user.ratings.each do |rating| %>
 	<li> <%= rating.to_s %> <%= link_to 'Delete', rating_path(rating.id), method: :delete, data: {confirm: 'Are you sure?'} %>

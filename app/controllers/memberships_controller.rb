@@ -15,6 +15,8 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
+    @beer_clubs = BeerClub.all
+
   end
 
   # GET /memberships/1/edit
@@ -25,6 +27,7 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @membership.user_id = current_user.id
 
     respond_to do |format|
       if @membership.save
