@@ -28,14 +28,19 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     @membership.user_id = current_user.id
+    bc = BeerClub.find_by id:@membership.beer_club_id
 
-    respond_to do |format|
-      if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-        format.json { render :show, status: :created, location: @membership }
-      else
-        format.html { render :new }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
+    if bc.members.include? current_user
+      redirect_to beer_clubs_path, notice: "You can only join once to the same Beer Club!"
+    else
+      respond_to do |format|
+        if @membership.save
+          format.html { redirect_to beer_club_path(bc.id), notice: 'Membership was successfully created.' }
+          format.json { render :show, status: :created, location: @membership }
+        else
+          format.html { render :new }
+          format.json { render json: @membership.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -74,4 +79,4 @@ class MembershipsController < ApplicationController
     def membership_params
       params.require(:membership).permit(:user_id, :beer_club_id)
     end
-end
+  end
