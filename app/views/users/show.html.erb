@@ -13,7 +13,11 @@ Member of:
 <% end %>
 <ul>
 	<% @user.ratings.each do |rating| %>
-	<li> <%= rating.to_s %> <%= link_to 'Delete', rating_path(rating.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+	<li>
+		<%= rating %>
+		<% if @user == current_user %>
+		<%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
 	</li>
 	<% end %>
 </ul>
