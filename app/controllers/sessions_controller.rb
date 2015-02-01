@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
 
 	def create
 		user = User.find_by username: params[:username]
-		if user.nil?
-			redirect_to :back, notice: "User #{params[:username]} does not exist!"
-		else
-			session[:user_id] = user.id unless user.nil?
+		if user && user.authenticate(params[:password])
+			session[:user_id] = user.id
 			redirect_to user, notice: "Welcome back #{params[:username]}!"
+		else
+			redirect_to :back, notice: "Invalid credentials"
 		end
 	end
 	def destroy
