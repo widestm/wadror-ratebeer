@@ -7,9 +7,11 @@
 <p>
 	<%= "Has made #{pluralize(@user.ratings.count, 'rating')}, with an average of #{@user.average_rating} points" %>
 </p>
+<% if @beer_clubs.count > 0 %>
 Member of:
 <% @beer_clubs.each do |bc| %>
 <%= link_to bc.name, beer_club_path(bc.id)%>
+<% end %>
 <% end %>
 <ul>
 	<% @user.ratings.each do |rating| %>
@@ -22,5 +24,9 @@ Member of:
 	<% end %>
 </ul>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %></br>
+<% if !current_user.nil? && current_user.id == @user.id %>	
+<%= link_to 'Edit', edit_user_path(@user) %> </br>
+<%= link_to 'Delete profile', @user, method: :delete, data: { confirm: "	Are you sure?\nThere is no going back from here" } %>
+<% end %>
+
