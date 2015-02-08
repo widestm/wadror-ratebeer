@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
 
 	validates_format_of :password, :with => /(?=\w*\d)(?=\w*[A-Z])/	
 
+	def favorite_beer
+		return nil if ratings.empty?
+		ratings.order(score: :desc).limit(1).first.beer
+	end
 end
