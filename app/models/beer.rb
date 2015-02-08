@@ -6,6 +6,7 @@ include RatingAverage
 	has_many :raters, -> {uniq}, through: :ratings, source: :user
 
 	validates :name, presence: true
+	validates :style, presence: true
 
 	def to_s
 		b = Brewery.find_by id:brewery.id

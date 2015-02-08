@@ -4,7 +4,7 @@ describe User do
 	it "has the username set correctly" do
 		user = User.new username:"Pekka"
 
-		user.username.should == "Pekka"
+		expect(user.username).to eq("Pekka")
 	end
 
 	it "is not saved without a password" do
@@ -34,7 +34,7 @@ describe User do
 	end
 	describe "with a too short password" do
 		
-		let(:user){User.create username:"Pekka", password:"ps", password_confirmation:"ps"}
+		let(:user){User.create username:"Pekka", password:"pS1", password_confirmation:"pS1"}
 		
 		it "is not saved" do
 			expect(user).not_to be_valid
