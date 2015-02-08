@@ -4,7 +4,9 @@ Number of ratings <%= @ratings.count %>
 
 <ul>
 	<% @ratings.each do |rating| %>
-    <li> <%= rating %> <%= link_to rating.user.username, user_path(rating.user_id)%> </li>	<% end %>
+	<li> <%= rating %> <%= link_to rating.user.username, user_path(rating.user_id)%> </li>	<% end %>
 </ul>
 </br>
+<% unless current_user.nil? %>
 <%= link_to 'New Rating', new_rating_path   %>
+<% end %>

@@ -7,10 +7,13 @@ class RatingsController < ApplicationController
 		@beers = Beer.all
 	end
 	def create
-		@rating = Rating.create params.require(:rating).permit(:score, :beer_id)
-		if @rating.save
-			current_user.ratings << @rating
-			redirect_to current_user
+		@rating = Rating.new params.require(:rating).permit(:score, :beer_id)
+
+		if current_user.nil?
+			redirect_to signin_path, notice:'You have to sign in before you can rate a beer'
+		elsif @rating.save
+			current_user.ratings << @rating  
+			redirect_to user_path current_user
 		else
 			@beers = Beer.all
 			render :new
