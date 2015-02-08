@@ -10,8 +10,9 @@ gem 'rails', '~> 4.2.0'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'byebug'
-  	gem 'web-console', '~> 2.0'
-   	gem 'better_errors'
+	gem 'web-console', '~> 2.0'
+	gem 'better_errors'
+	gem 'rspec-rails', '~> 3.0'
 end
 group :production do
 	gem 'pg'
