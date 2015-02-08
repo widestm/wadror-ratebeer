@@ -1,5 +1,9 @@
 require 'rails_helper'
-
+# hack for adding all models and controllers to coverage rapport
+BeerClub
+BeerClubsController
+MembershipsController
+Membership
 
 describe "User" do
   before :each do

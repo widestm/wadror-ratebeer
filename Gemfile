@@ -23,6 +23,7 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'capybara'
 	gem 'launchy'
+	gem 'simplecov', require: false
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
