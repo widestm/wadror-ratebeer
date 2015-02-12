@@ -1,10 +1,17 @@
 language: ruby
-
 rvm:
- - 2.2.0
-
+- 2.2.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+
+deploy:
+	provider: heroku
+	api_key:
+	secure: FFidYJ7wwwsbB9Fv2tV8Onk8YwgRooEHwxMuLGXLRDWim5+UO7Cp3tEfZznduWDlE/WoDOrXmrxnFeQkRlgD4yBS4DIC3u6BEWB+kdgmK1uPX0TOa8lWtnTkeGU163VFZfhBuSbbbLKQtVCs5WmdrzLrZYIvnKwGo6E/eByOn2I=
+app: morning-garden-3326
+on:
+repo: widestm/wadror-ratebeer
+run: "rake db:migrate"
