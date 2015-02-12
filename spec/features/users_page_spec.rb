@@ -21,7 +21,7 @@ describe "User page" do
 	it "deletes ratings properly" do
 		visit user_path(user)
 		expect(Rating.count).to eq(5)
-		page.all('a')[9].click   #ugly hack for deleting first rating :(
+		page.find('li', :text => 'anonymous 1 delete').click_link('delete')
 		expect(page).to_not have_content "anonymous 1"
 		expect(Rating.count).to eq(4)
 	end
