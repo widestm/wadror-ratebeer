@@ -1,7 +1,7 @@
 class BeermappingApi
-  def self.places_in(city)
+  def self.fetch_places_in(city)
     url = 'http://stark-oasis-9187.herokuapp.com/api/'
-    
+
     response = HTTParty.get "#{url}#{ERB::Util.url_encode(city)}"
     places = response.parsed_response["bmp_locations"]["location"]
 
@@ -15,5 +15,9 @@ class BeermappingApi
 
   def self.key
     "13935bcb4d39ddf2038744e65edc1ab4"
+  end
+  def self.places_in(city)
+    city=city.downcase
+    Rails.cache.fetch(city, expires_in: 7.days) {fetch_places_in(city)}
   end
 end
