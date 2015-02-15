@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
   end
   def show
 
-    places = Rails.cache.read session[:last_search]
+    places = BeermappingApi.places_in( session[:last_search])
     places.each do |p|
       if p.id == params[:id]
         @place = p
