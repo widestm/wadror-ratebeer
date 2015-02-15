@@ -9,14 +9,6 @@ b1 = Brewery.create name:"Koff", year:1897
 b2 = Brewery.create name:"Malmgard", year:2001
 b3 = Brewery.create name:"Weihenstephaner", year:1042
 
-b1.beers.create name:"Iso 3", style_id:10
-b1.beers.create name:"Karhu", style_id:12
-b1.beers.create name:"Tuplahumala", style_id:14
-b2.beers.create name:"Huvila Pale Ale", style_id:12
-b2.beers.create name:"X Porter", style_id:11
-b3.beers.create name:"Hefezeizen", style_id:14
-b3.beers.create name:"Helles", style_id:11
-
 Style.create style:"English India Pale Ale", description:"First brewed in England and exported for the British troops in India during the late 1700s. To withstand the voyage, IPA's were basically tweaked Pale Ales that were, in comparison, much more malty, boasted a higher alcohol content and were well-hopped, as hops are a natural preservative. Historians believe that an IPA was then watered down for the troops, while officers and the elite would savor the beer at full strength. The English IPA has a lower alcohol due to taxation over the decades. The leaner the brew the less amount of malt there is and less need for a strong hop presence which would easily put the brew out of balance. Some brewers have tried to recreate the origianl IPA with strengths close to 8-9% "
 
 Style.create style:"
@@ -47,3 +39,14 @@ Czech Pilsener
 ", description:"The birth of Pilsner beer can be traced back to its namesake, the ancient city of Plzen (or Pilsen) which is situated in the western half of the Czech Republic in what was once Czechoslovakia and previously part of the of Bohemian Kingdom. Pilsner beer was first brewed back in the 1840's when the citizens, brewers and maltsters of Plzen formed a brewer's guild and called it the People's Brewery of Pilsen.
 
 The Czech Pilsner, or sometimes known as the Bohemian Pilsner, is light straw to golden color and crystal clear. Hops are very prevalent usually with a spicy bitterness and or a spicy floral flavor and aroma, notably one of the defining characteristics of the Saaz hop. Smooth and crisp with a clean malty palate, many are grassy. Some of the originals will show some archaic yeast characteristics similar to very mild buttery or fusel (rose like alcohol) flavors and aromas."
+
+
+
+b1.beers.create name:"Iso 3", style_id:1
+b1.beers.create name:"Karhu", style_id:2
+b1.beers.create name:"Tuplahumala", style_id:7
+b2.beers.create name:"Huvila Pale Ale", style_id:5
+b2.beers.create name:"X Porter", style_id:4
+b3.beers.create name:"Hefezeizen", style_id:3
+b3.beers.create name:"Helles", style_id:2
+

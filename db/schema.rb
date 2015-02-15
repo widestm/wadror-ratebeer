@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 20150215190906) do
   end
 
   create_table "beers", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "style_id",   limit: 255
+    t.string   "name"
+    t.integer  "style_id"
     t.integer  "brewery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "breweries", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
