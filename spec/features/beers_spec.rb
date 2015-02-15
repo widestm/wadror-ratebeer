@@ -12,7 +12,6 @@ describe "Beer" do
 	it "is added if valid attributes" do
 		visit new_beer_path
 		
-		save_and_open_page
 		select('style1', from:'beer[style_id]')
 		select('Koff', from:'beer[brewery_id]')
 		fill_in('beer[name]', with:'testi')
