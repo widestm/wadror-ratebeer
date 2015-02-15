@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
   def index
-    @memberships = Membership.all
+    @membership = Membership.all
   end
 
   # GET /memberships/1
@@ -31,11 +31,11 @@ class MembershipsController < ApplicationController
     bc = BeerClub.find_by id:@membership.beer_club_id
 
     if bc.members.include? current_user
-      redirect_to beer_clubs_path, notice: "You can only join once to the same Beer Club!"
+      redirect_to beer_clubs_path, notice: "You can only join the same Beer club once!"
     else
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to beer_club_path(bc.id), notice: 'Membership was successfully created.' }
+          format.html { redirect_to beer_club_path(bc.id), notice: "Welcome to the club, #{current_user.username}!" }
           format.json { render :show, status: :created, location: @membership }
         else
           format.html { render :new }
@@ -64,7 +64,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user.id), notice: 'Membership was successfully ended.' }
       format.json { head :no_content }
     end
   end

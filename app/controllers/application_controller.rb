@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :is_member
+
+  def is_member
+    Membership.find_by user_id:current_user.id, beer_club_id:params[:id]
+  end
+
 
   def current_user
   	return nil if session[:user_id].nil?

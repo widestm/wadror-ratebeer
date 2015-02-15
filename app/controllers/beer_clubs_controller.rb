@@ -1,6 +1,7 @@
 class BeerClubsController < ApplicationController
   before_action :set_beer_club, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
+  
 
   # GET /beer_clubs
   # GET /beer_clubs.json
@@ -12,6 +13,9 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1.json
   def show
     @members= @beer_club.members.all
+    unless current_user.nil?
+      @membership = Membership.find_by user_id:current_user.id, beer_club_id:params[:id]
+    end
   end
 
   # GET /beer_clubs/new

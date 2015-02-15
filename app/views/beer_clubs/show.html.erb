@@ -11,6 +11,12 @@
 <ul>
 	<li><%= link_to member.username, user_path(member.id) %> </li>
 </ul>
-<% end %>
+<% end %> 
+<% if current_user && is_member %>
+ <%= form_for(@membership, method: "delete") do |f| %>
+      <%= f.hidden_field :beer_club_id %>
+      <%= f.submit value: "end the membership" %>
+   <% end %>
+   <% end %>
 <%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
 <%= link_to 'Back', beer_clubs_path %>
