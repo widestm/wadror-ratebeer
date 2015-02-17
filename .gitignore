@@ -15,4 +15,8 @@
 /log/*.log
 /tmp
 
+#ignore coverage stuff
+coverage/*
+coverage/.*
+
 hours.txt
