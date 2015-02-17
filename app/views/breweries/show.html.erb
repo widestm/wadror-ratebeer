@@ -1,5 +1,7 @@
 <h2><%= @brewery.name %></h2>
-
+<% if not @brewery.active  %>
+<span class="label label-info">retired</span>
+<% end %>
 <h3><em>Established in <%= @brewery.year%> </em></h3>
 <p>Beers in this brewery: <%= @brewery.beers.count%> </p>
 
