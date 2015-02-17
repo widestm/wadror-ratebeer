@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
   end
 
   def search
+    return redirect_to places_path, notice: "Please enter a city to search for" if params[:city] == "" 
     @places = BeermappingApi.places_in(params[:city])
     session[:last_search] = params[:city]
     if @places.empty?
@@ -13,7 +14,6 @@ class PlacesController < ApplicationController
     end
   end
   def show
-
     places = BeermappingApi.places_in( session[:last_search])
     places.each do |p|
       if p.id == params[:id]
