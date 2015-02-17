@@ -13,6 +13,7 @@ group :development, :test do
 	gem 'web-console', '~> 2.0'
 	gem 'better_errors'
 	gem 'rspec-rails', '~> 3.0'
+	gem 'rails_layout'
 end
 group :production do
 	gem 'pg'
@@ -51,6 +52,8 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'httparty'
+
+gem 'bootstrap-sass'
 
 # Use unicorn as the app server
 # gem 'unicorn'
