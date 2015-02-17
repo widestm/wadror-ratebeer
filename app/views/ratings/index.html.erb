@@ -8,5 +8,5 @@ Number of ratings <%= @ratings.count %>
 </ul>
 </br>
 <% unless current_user.nil? %>
-<%= link_to 'New Rating', new_rating_path   %>
+<%= link_to 'New Rating', new_rating_path, class:"btn btn-success" %>
 <% end %>

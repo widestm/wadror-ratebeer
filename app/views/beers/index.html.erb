@@ -1,6 +1,6 @@
   <h1>Listing beers</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,10 +15,10 @@
     <% byebug if beer.brewery.nil? %>
     <tr>
       <td><%= link_to beer.name, beer %></td>
-      <td><%= beer.style.style %></td>
+      <td><%= link_to beer.style.style, beer.style(beer.style.id) %></td>
       <td><%= link_to beer.brewery.name, beer.brewery %></td>
-      <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-      <td><%= link_to 'Delete', beer, method: :delete, data: { confirm: "Are you sure you want to delete \'#{beer.name}\'" } %></td>
+      <td><%= link_to 'Edit', edit_beer_path(beer) , class:"btn btn-primary"%></td>
+      <td><%= link_to 'Delete', beer, method: :delete, data: { confirm: "Are you sure you want to delete \'#{beer.name}\'" } , class:"btn btn-danger"%></td>
     </tr>
     <% end %>
   </tbody>
@@ -26,6 +26,4 @@
 
 <br>
 
-<%= link_to 'New Beer', new_beer_path %>
-</br>
-<%= link_to 'List of breweries', breweries_path %>
+<%= link_to 'New Beer', new_beer_path , class:"btn btn-success"%>

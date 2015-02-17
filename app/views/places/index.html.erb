@@ -1,23 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <%= form_tag places_path do %>
-  city <%= text_field_tag :city, params[:city] %>
-  <%= submit_tag "Search" %>
+City:  <%= text_field_tag :city, params[:city] %>
+<%= submit_tag "Search", class:"btn btn-primary"%>
 <% end %>
 
 <% if @places %>
-  <table>
-    <thead>
-      <% Place.rendered_fields.each do |f| %>
-        <td><%=f%></td>
-      <% end %>
-    </thead>
-    <% @places.each do |place| %>
-      <tr>
-        <% Place.rendered_fields.each do |f| %>
-          <td><%=link_to place.send(f), place_path(place.id) %></td>
-        <% end %>
-      </tr>
+<table class="table table-hover">
+  <thead>
+    <% Place.rendered_fields.each do |f| %>
+    <td><%=f%></td>
     <% end %>
-  </table>
+    <td></td>
+  </thead>
+  <% @places.each do |place| %>
+  <tr>
+    <% Place.rendered_fields.each do |f| %>
+    <td><%=place.send(f)%></td>
+    <% end %>
+    <td><%= link_to "Show", place_path(place.id) , class:"btn btn-primary"%></td>
+
+  </tr>
+  <% end %>
+</table>
 <% end %>

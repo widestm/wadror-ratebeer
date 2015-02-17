@@ -24,9 +24,10 @@ Member of:
 	<% end %>
 </ul>
 
-<%= link_to 'Back', users_path %></br>
 <% if !current_user.nil? && current_user.id == @user.id %>	
-<%= link_to 'Edit', edit_user_path(@user) %> </br>
-<%= link_to 'Delete profile', @user, method: :delete, data: { confirm: "	Are you sure?\nThere is no going back from here" } %>
+<%= link_to 'Edit', edit_user_path(@user) , class:"btn btn-primary"%> 
+</br>
+</br>
+<%= link_to 'Delete profile', @user, method: :delete, data: { confirm: "	Are you sure?\nThere is no going back from here" } , class:"btn btn-danger"%>
 <% end %>
 
