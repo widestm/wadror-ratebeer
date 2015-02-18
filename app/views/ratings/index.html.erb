@@ -22,6 +22,7 @@
 	</thead>
 	<tbody>
 		<% @most_active_users.each do |user| %>
+		<% unless user.amount_of_ratings == 0 %>
 		<tr>  
 			<td><%= link_to user.username, user%></td>
 			<td><%= link_to user.favorite_beer.name, user.favorite_beer%></td>
@@ -29,6 +30,7 @@
 			<td><%= link_to user.favorite_brewery.name, user.favorite_brewery%></td>
 			<td><%= user.amount_of_ratings%></td>
 		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>
