@@ -1,6 +1,11 @@
 class RatingsController < ApplicationController
 	def index
+		@recent_ratings = Rating.all.recent
 		@ratings = Rating.all
+		@best_three_breweries = Brewery.top 3
+		@best_three_beers = Beer.top 3
+		@best_three_styles = Style.top 3
+		@most_active_users = User.most_active 3
 	end
 	def new
 		@rating = Rating.new
@@ -13,7 +18,7 @@ class RatingsController < ApplicationController
 			redirect_to signin_path, notice:'You have to sign in before you can rate a beer'
 		elsif @rating.save
 			current_user.ratings << @rating  
-			redirect_to user_path current_user
+			redirect_to ratings_path
 		else
 			@beers = Beer.all
 			render :new

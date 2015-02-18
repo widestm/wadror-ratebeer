@@ -1,10 +1,43 @@
 </br>
 
-Number of ratings <%= @ratings.count %>
+<h2>Best beers</h2>
+<%= render 'list_three_best_rated', best_three: @best_three_beers %>
 
+<h2>Best breweries</h2>
+<%= render 'list_three_best_rated', best_three: @best_three_breweries %>
+
+<h2>Best styles</h2>
+<%= render 'list_three_best_rated', best_three: @best_three_styles %>
+
+<h2>Most active users</h2>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td>User</td>
+			<td>Favorite beer</td>
+			<td>Preferred style</td>
+			<td>Favorite brewery</td>
+			<td>Ratings</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @most_active_users.each do |user| %>
+		<tr>  
+			<td><%= link_to user.username, user%></td>
+			<td><%= link_to user.favorite_beer.name, user.favorite_beer%></td>
+			<td><%= link_to user.favorite_style.name, user.favorite_style%></td>
+			<td><%= link_to user.favorite_brewery.name, user.favorite_brewery%></td>
+			<td><%= user.amount_of_ratings%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<h2>Recent Ratings</h2>
 <ul>
-	<% @ratings.each do |rating| %>
-	<li> <%= rating %> <%= link_to rating.user.username, user_path(rating.user_id)%> </li>	<% end %>
+	<% @recent_ratings	.each do |rating| %>
+	<li> <%= link_to rating, rating.beer %> <%= link_to rating.user.username, user_path(rating.user_id)%> </li>	<% end %>
 </ul>
 </br>
 <% unless current_user.nil? %>
