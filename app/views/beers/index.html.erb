@@ -15,7 +15,7 @@
     <% byebug if beer.brewery.nil? %>
     <tr>
       <td><%= link_to beer.name, beer %></td>
-      <td><%= link_to beer.style.style, beer.style(beer.style.id) %></td>
+      <td><%= link_to beer.style.name, beer.style(beer.style.id) %></td>
       <td><%= link_to beer.brewery.name, beer.brewery %></td>
       <td><%= link_to 'Edit', edit_beer_path(beer) , class:"btn btn-primary"%></td>
       <td><%= link_to 'Delete', beer, method: :delete, data: { confirm: "Are you sure you want to delete \'#{beer.name}\'" } , class:"btn btn-danger"%></td>
