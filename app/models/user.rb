@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+	class User < ActiveRecord::Base
 	include RatingAverage
 
 	has_secure_password
@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 4 }
 	validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one upper case letter" }
 	
+	def amount_of_ratings
+		self.ratings.count
+	end
 	def favorite_beer
 		return nil if ratings.empty?
 		ratings.order(score: :desc).limit(1).first.beer
@@ -60,4 +63,8 @@ class User < ActiveRecord::Base
 				end
 				ratings_of_style.map(&:score).sum / ratings_of_style.count
 			end
+			def self.most_active(n)
+				sorted_by_rating_in_desc_order = User.all.sort_by{ |u| -(u.ratings.count||0) }
+				sorted_by_rating_in_desc_order[0..n-1]
+			end			
 		end
