@@ -18,7 +18,7 @@ FactoryGirl.define do
     year 1900
   end
   factory :style do
-    style "style1"
+    name "style1"
     description "desc"
   end
 
