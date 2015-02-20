@@ -19,5 +19,5 @@
 	
 </p>
 </br>
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> | 
-<%= link_to 'Delete', @brewery, method: :delete, data: { confirm: "Are you sure you want to delete \'#{@brewery.name}\'?" } %>
+<%= link_to "Change activity", toggle_activity_brewery_path(@brewery.id), method: :post, class: "btn btn-primary" %>
+<%= edit_and_destroy_buttons(@brewery) %>

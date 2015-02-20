@@ -32,5 +32,4 @@ Score: <%= f.number_field :score %>
 <% end %>
 <% end %>
 </br>
-<%= link_to 'Edit', edit_beer_path(@beer) %> |
-<%= link_to 'Delete', @beer, method: :delete, data: { confirm: "Are you sure you want to delete \'#{@beer.name}\'" }%>
+<%= edit_and_destroy_buttons(@beer) %>
