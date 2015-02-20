@@ -9,7 +9,7 @@
 		<% best_three.each do |object| %>
 		<tr>
 			<td><%= link_to object.name, object%></td>
-			<td><%= link_to object.average_rating, object%></td>
+			<td><%= object.average_rating%></td>
 		</tr>
 		<% end %>
 	</tbody>
