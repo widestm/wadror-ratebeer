@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :is_member
   helper_method :is_admin
+  helper_method :is_admin_view
 
   def is_member
     Membership.find_by user_id:current_user.id, beer_club_id:params[:id]
@@ -20,6 +21,11 @@ class ApplicationController < ActionController::Base
     redirect_to signin_path, notice:'you should be signed in' if current_user.nil?
   end
   def is_admin
+    return true if current_user.admin
     redirect_to :back, notice:"Only users with admin right can delete content" if current_user.admin == false || nil
+  end
+  def is_admin_view
+    return nil if current_user.nil?
+    return current_user.admin
   end
 end

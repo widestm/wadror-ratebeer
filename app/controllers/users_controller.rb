@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   # GET /users
   # GET /users.json
   def index
@@ -66,6 +67,14 @@ class UsersController < ApplicationController
     end
   end
 end
+def toggle_frozen_status
+  user = User.find(params[:id])
+  user.update_attribute :frozen_account, (not user.frozen_account)
+
+  new_status = user.frozen_account? ? "Frozen" : "Active"
+
+  redirect_to :back, notice:"User status changed to #{new_status}"
+end
 
 private
     # Use callbacks to share common setup or constraints between actions.
@@ -75,6 +84,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username, :password, :password_confirmation, :frozen_account)
     end
   end
