@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @user.admin = false
   end
 
   # GET /users/1/edit
@@ -28,6 +27,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.admin = false
+    @user.frozen_account = false
 
     respond_to do |format|
       if @user.save
