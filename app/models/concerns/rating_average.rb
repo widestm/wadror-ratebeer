@@ -4,6 +4,6 @@ module RatingAverage
 		if ratings.count == 0
 			return 0
 		end
-			self.ratings.average(:score).round(2)
+			self.ratings.average(:score).round(1)
 		end
 	end
