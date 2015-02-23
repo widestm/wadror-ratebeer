@@ -16,9 +16,9 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-<%= f.select :style_id, options_from_collection_for_select(@styles, :id, :name) %>  </div>
+<%= f.select :style_id, options_from_collection_for_select(@styles, :id, :name, @beer.style_id) %>  </div>
   <div class="field">
-    <%= f.select :brewery_id, options_from_collection_for_select(@breweries, :id, :name) %>
+    <%= f.select :brewery_id, options_from_collection_for_select(@breweries, :id, :name, @beer.brewery_id) %>
   </div>
   <div class="actions">
     <%= f.submit class:"btn btn-primary" %>
