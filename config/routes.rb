@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   root 'breweries#index'
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
   # get 'ratings', to: 'ratings#index'
   # get 'ratings/new', to:'ratings#new'
   # post 'ratings', to:'ratings#create'
