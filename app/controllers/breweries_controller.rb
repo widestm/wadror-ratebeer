@@ -7,7 +7,30 @@ class BreweriesController < ApplicationController
   def index
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired 
-  end
+
+    order = params[:order] || 'name'
+
+    if session[:last_order] == "year" 
+      order = "year_desc"
+      session[:last_order] = nil
+    end
+    @active_breweries = case order
+    when 'name' then @active_breweries.sort_by {|b| b.name}
+    when 'year' then session[:last_order]= "year"
+      @active_breweries.sort_by {|b| b.year}
+    when 'year_desc' then session[:last_order] = nil
+      @active_breweries.sort_by {|b| -b[:year]} 
+
+    end
+    @retired_breweries = case order
+    when 'name' then @retired_breweries.sort_by {|b| b.name}
+    when 'year' then session[:last_order]= "year"
+      @retired_breweries.sort_by {|b| b.year}
+    when 'year_desc' then session[:last_order] = nil
+     @retired_breweries.sort_by{|b| -b[:year]}
+   end
+
+ end
 
   # GET /breweries/1
   # GET /breweries/1.json
