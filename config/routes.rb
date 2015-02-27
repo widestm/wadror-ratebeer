@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   get 'beerlist', to:'beers#list'
   get 'ngbeerlist', to:'beers#nglist'
+  get 'brewerylist', to:'breweries#nglist'
 
   # get 'ratings', to: 'ratings#index'
   # get 'ratings/new', to:'ratings#new'
