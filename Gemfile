@@ -26,6 +26,9 @@ group :test do
 	gem 'launchy'
 	gem 'simplecov', require: false
 	gem 'webmock'
+	gem 'selenium-webdriver'
+	gem 'database_cleaner'
+	gem 'poltergeist'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -55,6 +58,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 
 gem 'bootstrap-sass'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
