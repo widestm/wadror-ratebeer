@@ -1,5 +1,5 @@
-Link to app:     
-https://morning-garden-3326.herokuapp.com/
+App demo:     
+http://morning-garden-3326.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/widestm/wadror-ratebeer.svg?branch=master)](https://travis-ci.org/widestm/wadror-ratebeer)    
 
