@@ -15,11 +15,12 @@
 		has_many :unconfirmed_clubs, through: :unconfirmed_memberships, source: :beer_club
 
 		validates :username, uniqueness: true,
-		length: { in: 3..15 }
+		length: { in: 3..40 }
 
-		validates :password, length: { minimum: 4 }
-		validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one upper case letter" }
+		validates :password, length: { minimum: 4 }, unless: :skip_password_validation
+		validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one upper case letter" }, unless: :skip_password_validation
 
+		attr_accessor :skip_password_validation
 
 		def amount_of_ratings
 			self.ratings.count
