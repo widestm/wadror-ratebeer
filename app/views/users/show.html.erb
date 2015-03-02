@@ -6,8 +6,9 @@
 	<%= "Has made #{pluralize(@user.ratings.count, 'rating')}, with an average of #{@user.average_rating} points" %>
 </p>
 
-<h3>Member of:</h3>
 <% if @confirmed_clubs.count > 0 %>
+<h3>Member of:</h3>
+
 <ul>
 	<% @confirmed_clubs.each do |bc| %>
 	<li><%= link_to bc.name, beer_club_path(bc.id)%></li>
@@ -15,8 +16,8 @@
 </ul>
 <% end %>
 
-<h3>You have applied membership of:</h3> 
 <% if @unconfirmed_clubs.count > 0 %>
+<h3>You have applied membership of:</h3> 
 <ul>
 	<% @unconfirmed_clubs.each do |bc| %>
 	<li><%= link_to bc.name, beer_club_path(bc.id)%></li>
@@ -24,6 +25,7 @@
 </ul>
 <% end %>
 
+<% if @user.ratings.count > 0 %>
 <h3>Beers you have rated</h3>
 <ul>
 	<% @user.ratings.each do |rating| %>
@@ -35,6 +37,8 @@
 	</li>
 	<% end %>
 </ul>
+<% end %>
+
 <% if @user.frozen_account && is_admin_view %>
 <button class="btn btn-primary" disabled="disabled"> <%=  "This account is frozen!" %> </button>
 <% end %>
