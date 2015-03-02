@@ -8,11 +8,18 @@
 		has_many :memberships, dependent: :destroy
 		has_many :beer_clubs, through: :memberships
 
+		has_many :confirmed_memberships, -> { where confirmed:true}, class_name: 'Membership'
+		has_many :unconfirmed_memberships, -> { where confirmed:[false, nil]}, class_name: 'Membership'
+		
+		has_many :confirmed_clubs, through: :confirmed_memberships, source: :beer_club
+		has_many :unconfirmed_clubs, through: :unconfirmed_memberships, source: :beer_club
+
 		validates :username, uniqueness: true,
 		length: { in: 3..15 }
 
 		validates :password, length: { minimum: 4 }
 		validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/, message: "has to contain one number and one upper case letter" }
+
 
 		def amount_of_ratings
 			self.ratings.count
@@ -76,4 +83,7 @@
 				sorted_by_rating_in_desc_order = User.all.sort_by{ |u| -(u.ratings.count||0) }
 				sorted_by_rating_in_desc_order[0..n-1]
 			end			
+			def membership_of_beer_club(beer_club_id)
+				Membership.where({user_id:self.id, beer_club_id:beer_club_id}).first
+			end
 		end

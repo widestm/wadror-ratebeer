@@ -35,7 +35,7 @@ class MembershipsController < ApplicationController
     else
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to beer_club_path(bc.id), notice: "Welcome to the club, #{current_user.username}!" }
+          format.html { redirect_to beer_club_path(bc.id), notice: "Your application to join, #{bc.name} has been accepted. You have to wait for an accepted memeber to confirm your membership" }
           format.json { render :show, status: :created, location: @membership }
         else
           format.html { render :new }
@@ -68,8 +68,15 @@ class MembershipsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def confirm
+   membership = Membership.find(params[:id])
+   membership.update_attribute :confirmed, (true)
+   redirect_to :back
+   #redirect_to :back, notice:"#{brewery.name} activity status changed to #{new_status}"
+ end
 
-  private
+
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_membership
       @membership = Membership.find(params[:id])
@@ -77,6 +84,6 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:user_id, :beer_club_id)
+      params.require(:membership).permit(:user_id, :beer_club_id, :confirmed)
     end
   end

@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :is_admin_view
 
   def is_member
-    Membership.find_by user_id:current_user.id, beer_club_id:params[:id]
+    m = Membership.find_by user_id:current_user.id, beer_club_id:params[:id]
+    return nil if m.nil?
+    m.confirmed
   end
 
 

@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @beer_clubs = @user.beer_clubs
+    @confirmed_clubs = @user.confirmed_clubs
+    @unconfirmed_clubs = @user.unconfirmed_clubs
   end
 
   # GET /users/new
