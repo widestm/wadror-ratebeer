@@ -39,6 +39,7 @@ describe "beerlist page" do
 	end
 	it "lists beers by name by default", js: true do
 		visit beerlist_path
+		click_link "Name"
 		expect(find('table').find('tr:nth-child(2)')).to have_content "Fastenbier"
 		expect(find('table').find('tr:nth-child(3)')).to have_content "Lechte Weisse"
 		expect(find('table').find('tr:nth-child(4)')).to have_content "Nikolai"
