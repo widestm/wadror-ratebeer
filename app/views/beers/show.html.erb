@@ -1,4 +1,4 @@
-
+<% cache @beer do %>
 <p>
 	<strong>Name:</strong>
 	<%= @beer.name %>
@@ -13,6 +13,7 @@
 	<strong>Brewery:</strong>
 	<%= @beer.brewery.name %>
 </p> 
+<% end %>
 <p>
 	<% if @beer.ratings.empty? %>
 	This beer has not been rated yet!

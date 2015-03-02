@@ -1,3 +1,4 @@
+<% cache @brewery do %>
 <h2><%= @brewery.name %></h2>
 <% if not @brewery.active  %>
 <span class="label label-info">retired</span>
@@ -10,6 +11,7 @@
 	<%= link_to beer.name, beer %></br>
 	<% end %>
 </p>
+<% end %>
 <p>
 	<% if @brewery.ratings.empty? %>
 	No beers in this brewery have been rated
